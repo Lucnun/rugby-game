@@ -1,5 +1,7 @@
 // Standard headers
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 // Internal headers
 #include "direction.h"
@@ -18,12 +20,52 @@
 
 direction_t execute_attacker_strategy(
     position_t attacker_position, Spy defender_spy) {
-  // TODO: unused parameters, remove these lines later
   UNUSED(attacker_position);
   UNUSED(defender_spy);
 
   // TODO: Implement Attacker logic here
-  return (direction_t) DIR_RIGHT;
+  int seed;
+  static int id=0;
+  if(id==0){
+  	srandom(time(NULL));
+	id=1;
+  }
+  seed=random()%10;
+  switch(seed)
+  	{
+	case 1:
+		return (direction_t) DIR_RIGHT;
+		break;
+	case 2:
+		return (direction_t) DIR_RIGHT;
+		break;
+	case 3: 
+		return (direction_t) DIR_UP_RIGHT;
+		break;
+	case 4: 
+		return (direction_t) DIR_UP_RIGHT;
+		break;
+	case 5:
+		return (direction_t) DIR_DOWN_RIGHT;
+		break;
+	case 6:
+		return (direction_t) DIR_DOWN_RIGHT;
+		break;
+	case 7:
+		return (direction_t) DIR_UP;
+		break;
+	case 8:
+	       return (direction_t) DIR_LEFT;	
+		break;
+	case 9:
+		return (direction_t) DIR_DOWN;
+		break;
+	default:
+		return (direction_t) DIR_DOWN_LEFT;
+		break;
+
+
+  	}
 }
 
 /*----------------------------------------------------------------------------*/
